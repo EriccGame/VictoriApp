@@ -96,6 +96,10 @@ namespace VictoriApp.Framework.UI.Android.Lollipop
             }
         }
 
+        //[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        //[Obsolete("just cast me to avoid all this hiding...", true)]
+        //public new ContentAlignment Tag { get; set; }
+
         #endregion
         #region Events
 
@@ -110,6 +114,10 @@ namespace VictoriApp.Framework.UI.Android.Lollipop
             Width = 294;
             this.Height = InfoLabel.Location.Y + InfoLabel.Height + 74;
         }
+
+        #endregion
+
+        #region
 
         #endregion
 
@@ -140,6 +148,17 @@ namespace VictoriApp.Framework.UI.Android.Lollipop
             OKButton.Location = new Point(210, InfoLabel.Location.Y + InfoLabel.Height + 26);
             OKButton.Size = new Size(69, 33);
             OKButton.Text = "Got it";
+            OKButton.Click += OKButton_Click;
+        }
+
+        public event EventHandler ClickButton;
+
+        protected void OKButton_Click(object sender, EventArgs e)
+        {
+            if (this.ClickButton != null)
+                this.ClickButton(this, e);
+            else
+                MessageBox.Show("Programar en el evento 'ClickButton' ;)");
         }
 
         private void ResizeLabel()

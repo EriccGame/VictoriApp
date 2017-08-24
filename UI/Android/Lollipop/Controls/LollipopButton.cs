@@ -110,6 +110,17 @@ namespace VictoriApp.Framework.UI.Android.Lollipop
 
         #endregion
 
+        #region 
+
+        [EditorBrowsable(EditorBrowsableState.Never), Browsable(false)]
+        public new event EventHandler Click
+        {
+            add { base.Click += value; }
+            remove { base.Click -= value; }
+        }
+
+        #endregion
+
         public LollipopButton()
         {
             SetStyle((ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.SupportsTransparentBackColor | ControlStyles.UserPaint), true);
